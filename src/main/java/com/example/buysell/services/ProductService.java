@@ -8,29 +8,29 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    private List<Product> products = new ArrayList<>();
+    private List<Product> productsDB = new ArrayList<>();
     private long ID = 0;
 
     {
-        products.add(new Product(++ID, "Краска для волос", "Различные цвета", 670, "Krasnoyarsk", "Тихон"));
-        products.add(new Product(++ID, "Бензопила", "Цепная", 24000, "Moscow", "Игорь"));
-        products.add(new Product(++ID, "Сапоги", "описание сапогов", 2400, "Moscow", "Ирина"));
-        products.add(new Product(++ID, "Качели", "Детские до 30кг", 5800, "Ярославль", "Семен"));
+        productsDB.add(new Product(++ID, "Краска для волос", "Различные цвета", 670, "Krasnoyarsk", "Тихон", "Что то дополнительное"));
+        productsDB.add(new Product(++ID, "Бензопила", "Цепная", 24000, "Moscow", "Игорь","Что то дополнительное"));
+        productsDB.add(new Product(++ID, "Сапоги", "описание сапогов", 2400, "Moscow", "Ирина","Что то дополнительное"));
+        productsDB.add(new Product(++ID, "Качели", "Детские до 30кг", 5800, "Ярославль", "Семен","Что то дополнительное"));
     }
 
-    public List<Product> listProducts() { return products; }
+    public List<Product> listProductsDB () { return productsDB; }
 
     public void saveProduct(Product product) {
         product.setId(++ID);
-        products.add(product);
+        productsDB.add(product);
     }
 
     public void deleteProduct(Long id) {
-        products.removeIf(product -> product.getId().equals(id));
+        productsDB.removeIf(product -> product.getId().equals(id));
     }
 
-    public Product getProductById(Long id) {
-        for (Product product : products) {
+    public Product getProductFromDBById(Long id) {
+        for (Product product : productsDB) {
             if (product.getId().equals(id)) return product;
         }
         return null;

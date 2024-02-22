@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Витрина-магазин</title>
+    <title>Витрина-магазин главная страница</title>
 </head>
 <body>
-<h1>ЧАСТНЫЕ ОБЪЯВЛЕНИЯ</h1><hr>
-<h4>Товары со всей России</h4>
-<#list products as product>
+<h1>ОБЪЯВЛЕНИЯ</h1><hr>
+<h4>Все товары списком</h4>
+<#list PageProductsList as product>
     <div>
         <p><b>${product.title}</b> ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a></p>
     </div>
@@ -19,6 +19,7 @@
     Цена: <input type="number" name="price"/><br><br>
     Город: <input type="text" name="city"/><br><br>
     Имя: <input type="text" name="author"/><br><br>
+    Иное: <input type="text" name="something"/><br><br>
     <input type="submit" value="Добавить товар"/>
 </form>
 </body>

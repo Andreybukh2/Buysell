@@ -15,15 +15,15 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/")
-    public String products(Model model) {
-        model.addAttribute("products", productService.listProducts());
-        return "products";
+    public String products(Model modelInterface) {
+        modelInterface.addAttribute("PageProductsList", productService.listProductsDB());
+        return "PageProducts-All";
     }
 
     @GetMapping("/product/{id}")
-    public String productInfo(@PathVariable Long id, Model model) {
-        model.addAttribute("product", productService.getProductById(id));
-        return "product-info";
+    public String productInfo(@PathVariable Long id, Model modelInterface) {
+        modelInterface.addAttribute("PageProduct", productService.getProductFromDBById(id));
+        return "PageProduct-info";
     }
 
     @PostMapping("/product/create")
